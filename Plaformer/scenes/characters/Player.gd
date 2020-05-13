@@ -128,7 +128,10 @@ func movement():
 	if is_jumping && player_velocity.y >= 0:
 		is_jumping = false
 	dash()
-	player_velocity = move_and_slide(player_velocity, UP, SLOPE_STOP)
+	
+	var snap = Vector2.DOWN * 16 if !is_jumping else Vector2.ZERO
+	
+	player_velocity = move_and_slide_with_snap(player_velocity, snap, UP, SLOPE_STOP)
 
 func dash():
 	if Input.is_action_just_pressed("shift") && player_velocity.x > 0 && can_dash:
