@@ -49,9 +49,9 @@ func _physics_process(delta: float) -> void:
 	
 	#sprite
 	if _velocity.x < 0:
-		$Sprite.flip_h = false
+		$Body.scale.x = 1
 	elif _velocity.x > 0:
-		$Sprite.flip_h = true
+		$Body.scale.x = -1
 
 	$HealthBar.value = ennemy_health
 	ennemy_health = $HealthBar.value 
@@ -62,22 +62,15 @@ func _physics_process(delta: float) -> void:
 		fireball_fire()
 		fireball_timer.start()
 		can_shoot = false
-	
-	#should_shoot = check_raycasts()
 
-#func check_raycasts():
-	#for raycast in raycasts.get_children():
-		#if raycast.is_colliding():
-			#return true
-			
-	#return false
+
 
 
 
 func fireball_fire():
 	var fireball = FIREBALL.instance()
 	get_parent().add_child(fireball)
-	if $Sprite.flip_h == false:
+	if $Body.scale.x == 1:
 		fireball.fireball_speed *= -1
 	fireball.position = $FireballSpawner.global_position
 
