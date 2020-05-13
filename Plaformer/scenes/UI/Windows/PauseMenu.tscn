@@ -15,7 +15,6 @@ __meta__ = {
 }
 
 [node name="Pause" type="Button" parent="."]
-visible = false
 margin_left = 160.0
 margin_right = 180.0
 margin_bottom = 20.0

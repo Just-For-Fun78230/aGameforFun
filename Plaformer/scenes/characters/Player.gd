@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	
 	animation()
 	
-	dagger_number()
+	_dagger_number()
 	
 	weapon_equiped()
 	
@@ -128,10 +128,11 @@ func movement():
 	if is_jumping && player_velocity.y >= 0:
 		is_jumping = false
 	dash()
-	
-	
-	
 	player_velocity = move_and_slide(player_velocity, UP, SLOPE_STOP)
+	
+
+
+
 
 func dash():
 	if Input.is_action_just_pressed("shift") && player_velocity.x > 0 && can_dash:
@@ -189,7 +190,7 @@ func dagger_fire():
 func dagger_deacrease():#decresses number of daggers by 1
 	dagger_number -= 1 
 
-func dagger_number():
+func _dagger_number():
 	if dagger_number == 1:
 		$UI/WeaponMenu/DaggerScore/Dagger1.show()
 		$UI/WeaponMenu/DaggerScore/Dagger2.hide()

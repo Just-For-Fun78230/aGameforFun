@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://art/weapon/dagger2.png" type="Texture" id=1]
-[ext_resource path="res://scenes/weapons/Ennemys/Projectiles/MiniDaggers/MiniDaggerUp.gd" type="Script" id=2]
+[ext_resource path="res://scenes/weapons/Ennemys/Projectiles/MiniDaggers/MiniDaggerRight.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.50707, 3.42744 )
 
-[node name="MiniDaggerUP" type="Area2D"]
+[node name="MiniDaggerRight" type="Area2D"]
+rotation = 1.5708
 collision_layer = 0
 collision_mask = 9
 script = ExtResource( 2 )

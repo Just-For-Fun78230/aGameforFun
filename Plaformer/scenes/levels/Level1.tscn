@@ -11,8 +11,6 @@
 
 [node name="MiniShooters" type="Node" parent="Ennemies"]
 
-[node name="PickUpDagger" type="Node" parent="Ennemies"]
-
 [node name="Tilemaps" type="Node" parent="."]
 
 [node name="TreeTileMap" parent="Tilemaps" instance=ExtResource( 7 )]
@@ -29,3 +27,5 @@ position = Vector2( 32, 136 )
 [node name="MovingPlatform" type="Node" parent="Tilemaps"]
 
 [node name="HealthPotion" type="Node" parent="."]
+
+[node name="PickUpDagger" type="Node" parent="."]

@@ -2,7 +2,8 @@ extends Area2D
 
 
 
-var mini_dagger_speed = -200
+
+var mini_dagger_speed = 200
 
 var mini_dagger_velocity = Vector2()
 var dammage = 20
@@ -26,5 +27,3 @@ func _physics_process(_delta: float) -> void:
 
 func die():
 	queue_free()
-
-
