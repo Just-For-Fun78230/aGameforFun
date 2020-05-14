@@ -64,7 +64,9 @@ func _physics_process(delta: float) -> void:
 func _run():
 	if should_run == true:
 		mean_boar_max_speed.x += 10
+		$Body/Sprite.play("RunFast")
 	elif should_run == false:
 		mean_boar_max_speed.x = 50 
+		$Body/Sprite.play("Run")
 
 
