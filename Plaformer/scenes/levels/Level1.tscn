@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/world/TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/Objects/KeyDoor.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/characters/ennemys/MeanBoar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/world/TileMap/NoCollisons/Plants/Trees/TreeTileMap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/world/TileMap/Plaforms/Plaformer1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/world/TileMap/DirtTileMap.tscn" type="PackedScene" id=9]
 
 [node name="Level1" type="Node2D"]
 __meta__ = {
@@ -41,6 +42,8 @@ tile_data = PoolIntArray( 262174, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 0, 0
 
 [node name="Player" parent="Tilemaps" instance=ExtResource( 3 )]
 position = Vector2( 2336, 296 )
+
+[node name="DirtTileMap" parent="Tilemaps" instance=ExtResource( 9 )]
 
 [node name="MovingPlatform" type="Node" parent="Tilemaps"]
 

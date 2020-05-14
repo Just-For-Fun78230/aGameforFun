@@ -154,6 +154,9 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0 )
 5/z_index = 0
 
 [node name="DirtTileMap" type="TileMap"]
+scale = Vector2( 0.5, 0.5 )
 tile_set = SubResource( 7 )
-cell_size = Vector2( 32, 32 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 8
+collision_mask = 0
 format = 1

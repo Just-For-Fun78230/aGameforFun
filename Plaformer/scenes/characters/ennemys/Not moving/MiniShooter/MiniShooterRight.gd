@@ -18,10 +18,10 @@ func _on_MiniDaggerTimer_timeout() -> void:
 	mini_dagger_timer.stop()
 
 
-func _on_Scanner_body_entered(body: Node) -> void:
+func _on_Scanner_body_entered(_body: Node) -> void:
 	should_shoot = true
 
-func _on_Scanner_body_exited(body: Node) -> void:
+func _on_Scanner_body_exited(_body: Node) -> void:
 	should_shoot = false
 
 func _physics_process(delta: float) -> void:
