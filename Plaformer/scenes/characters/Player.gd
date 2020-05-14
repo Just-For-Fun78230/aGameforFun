@@ -16,8 +16,11 @@ onready var hero_sword_timer = $Timer/HeroSwordTimer
 
 var gravity 
 var can_shoot := true
+
 var player_health : float = 100
 var dagger_number : float = 0
+var key = false
+
 var move_speed = 8 * 16
 var player_velocity = Vector2(0,0)
 var weapon_choice : int
@@ -66,6 +69,8 @@ func _on_PickUpArea_area_entered(area: Area2D) -> void: #increases dagger number
 		dagger_number += 1
 	elif area.get_parent().name == "HealthPotion":
 		player_health += 50
+	elif area.get_parent().name == "Key":
+		key = true
 
 func _on_enemyDetector_area_entered(area: Area2D) -> void:
 	player_health -= area.dammage
@@ -87,6 +92,8 @@ func _physics_process(delta: float) -> void:
 	weapon_equiped()
 	
 	weapon_show()
+	
+	_key()
 	
 	attack()
 	
@@ -388,7 +395,11 @@ func weapon_show():
 		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 
-
+func _key():
+	if key == true:
+		$Body/KeySprite.show()
+	elif key == false:
+		$Body/KeySprite.hide()
 
 func attack():
 	if can_shoot == true and dagger_number > 0 and weapon_choice == 2:

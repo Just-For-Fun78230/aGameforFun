@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://art/characters/player/purbleMainIdle.png" type="Texture" id=1]
 [ext_resource path="res://scenes/characters/Player.gd" type="Script" id=2]
@@ -13,18 +13,19 @@
 [ext_resource path="res://art/UI/Lifebar/inFront.png" type="Texture" id=11]
 [ext_resource path="res://art/UI/Pause.png" type="Texture" id=12]
 [ext_resource path="res://art/weapon/Hero/HeroSwordCentered.png" type="Texture" id=13]
+[ext_resource path="res://art/world/PickUp/Key.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Run",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -284,6 +285,11 @@ position = Vector2( 5.10835, 0 )
 position = Vector2( 0, 1.794 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 5 )
+
+[node name="KeySprite" type="Sprite" parent="Body"]
+position = Vector2( 0, -16 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
