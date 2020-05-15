@@ -18,15 +18,15 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Run",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
@@ -281,10 +281,9 @@ __meta__ = {
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite" parent="Body"]
-position = Vector2( 0, -12.6222 )
-scale = Vector2( 0.65, 0.65 )
+position = Vector2( 0, 0.023735 )
 frames = SubResource( 1 )
-animation = "IdleNew"
+animation = "Idle"
 
 [node name="HeroSword" parent="Body" instance=ExtResource( 9 )]
 position = Vector2( 5.10835, 0 )

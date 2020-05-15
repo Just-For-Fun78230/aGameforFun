@@ -172,9 +172,9 @@ func _get_h_weight():
 
 func animation():
 	if player_velocity.x == 0:
-		$Body/Sprite.play("IdleNew")
+		$Body/Sprite.play("Idle")
 	elif player_velocity.x != 0:
-		$Body/Sprite.play("IdleNew")
+		$Body/Sprite.play("Run")
 
 
 func hero_sword_attack():#sword attack
