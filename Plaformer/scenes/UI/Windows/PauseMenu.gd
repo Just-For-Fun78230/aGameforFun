@@ -22,7 +22,9 @@ func _on_Resume_pressed() -> void:
 
 func _on_Menu_pressed() -> void:
 	get_tree().change_scene("res://scenes/UI/MainScreen.tscn")
-
+	pause_state = false
+	get_tree().paused = pause_state
+	$MarginContainer.hide()
 
 func _on_Pause_pressed() -> void:
 	if  pause_state == false:
