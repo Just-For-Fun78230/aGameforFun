@@ -10,7 +10,7 @@ extents = Vector2( 15.7658, 3.63396 )
 script = ExtResource( 2 )
 
 [node name="Body" type="KinematicBody2D" parent="."]
-collision_layer = 128
+collision_layer = 640
 collision_mask = 0
 motion/sync_to_physics = true
 

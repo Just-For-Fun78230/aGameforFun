@@ -80,6 +80,7 @@ func _on_PickUpArea_area_entered(area: Area2D) -> void: #increases dagger number
 
 
 
+
 func _on_enemyDetector_area_entered(area: Area2D) -> void:
 	player_health -= area.dammage
 
@@ -184,9 +185,9 @@ func _get_h_weight():
 
 func animation():
 	if player_velocity.x == 0:
-		$Body/Sprite.play("Idle")
+		$Body/Sprite.play("IdleNew")
 	elif player_velocity.x != 0:
-		$Body/Sprite.play("Run")
+		$Body/Sprite.play("RunNew")
 
 
 func hero_sword_attack():#sword attack
@@ -431,6 +432,11 @@ func health_update():
 func die():
 	queue_free()
 	get_tree().change_scene("res://scenes/UI/Windows/GameOver.tscn")
+
+
+
+
+
 
 
 

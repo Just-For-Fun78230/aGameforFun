@@ -143,6 +143,7 @@ shift={
 2d_physics/layer_7="MeanWeapons"
 2d_physics/layer_8="Platform"
 2d_physics/layer_9="DeathTileSets"
+2d_physics/layer_10="MovingPlatform"
 2d_physics/layer_11="playerdetection"
 
 [rendering]
