@@ -74,13 +74,18 @@ func _on_PickUpArea_area_entered(area: Area2D) -> void: #increases dagger number
 		player_health += 50
 	elif area.get_parent().name == "Key":
 		key = true
-	elif area.get_parent().name == "Tranpolin":
+	elif area.get_parent().name == "Trampolin":
 		player_velocity.y = area.trampolin_hight_y
 		player_velocity.x = area.trampolin_hight_x
 
 
+
 func _on_enemyDetector_area_entered(area: Area2D) -> void:
 	player_health -= area.dammage
+
+
+func _on_DeathTileMaps_body_entered(body: Node) -> void:
+	die()
 
 
 func _physics_process(delta: float) -> void:
