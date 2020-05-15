@@ -38,6 +38,9 @@ var max_jump_hight = 2.25 * Global.UNIT_SIZE
 var min_jump_hight = 0.8 * Global.UNIT_SIZE
 var jump_duration = 0.6
 
+
+
+
 func _ready() -> void:
 	dagger_timer.set_wait_time(0.5)
 	hero_sword_timer.set_wait_time(0.5)
@@ -46,7 +49,7 @@ func _ready() -> void:
 	gravity = 2 * max_jump_hight / pow(jump_duration,2)
 	max_jump_velocity = -sqrt(2 * gravity * max_jump_hight)
 	min_jump_velocity = -sqrt(2 * gravity * min_jump_hight)
-	
+
 
 
 
@@ -71,6 +74,10 @@ func _on_PickUpArea_area_entered(area: Area2D) -> void: #increases dagger number
 		player_health += 50
 	elif area.get_parent().name == "Key":
 		key = true
+	elif area.get_parent().name == "Tranpolin":
+		player_velocity.y = area.trampolin_hight_y
+		player_velocity.x = area.trampolin_hight_x
+
 
 func _on_enemyDetector_area_entered(area: Area2D) -> void:
 	player_health -= area.dammage

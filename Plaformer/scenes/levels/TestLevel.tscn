@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/world/TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/TileMap/Plaforms/Plaformer1.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/world/pickup/weapon/PickUpDagger.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/world/Objects/Button/MetalButton.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/world/Objects/Doors/BarDoor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/world/Objects/Trampolin/Trampolin.tscn" type="PackedScene" id=15]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -37,7 +38,7 @@ position = Vector2( 424, 161 )
 position = Vector2( 1048, 288 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 144, 184 )
+position = Vector2( 154.207, 184.322 )
 
 [node name="Key" type="Node" parent="."]
 
@@ -68,6 +69,29 @@ position = Vector2( -104, 264 )
 
 [node name="MetalButton" parent="TileMaps/Buttons" instance=ExtResource( 13 )]
 position = Vector2( -24, 264 )
+
+[node name="Tranpolin" type="Node" parent="TileMaps"]
+
+[node name="Trampolin" parent="TileMaps/Tranpolin" instance=ExtResource( 15 )]
+position = Vector2( 40, 184 )
+
+[node name="Trampolin2" parent="TileMaps/Tranpolin" instance=ExtResource( 15 )]
+position = Vector2( -248, 118.098 )
+rotation = 0.349066
+trampolin_hight_x = 300
+trampolin_hight_y = -170
+
+[node name="Trampolin3" parent="TileMaps/Tranpolin" instance=ExtResource( 15 )]
+position = Vector2( -190.647, 66.902 )
+rotation = -0.349066
+trampolin_hight_x = -300
+trampolin_hight_y = -170
+
+[node name="Trampolin4" parent="TileMaps/Tranpolin" instance=ExtResource( 15 )]
+position = Vector2( -241.731, 18.542 )
+rotation = 0.349066
+trampolin_hight_x = 300
+trampolin_hight_y = -170
 
 [node name="PickUpDagger" type="Node" parent="."]
 
