@@ -14,6 +14,8 @@ onready var dagger_timer = $Timer/DaggerTimer
 onready var hero_sword_timer = $Timer/HeroSwordTimer
 
 
+var attacking = false
+
 var gravity 
 var can_shoot := true
 
@@ -43,7 +45,7 @@ var jump_duration = 0.6
 
 func _ready() -> void:
 	dagger_timer.set_wait_time(0.5)
-	hero_sword_timer.set_wait_time(0.5)
+	hero_sword_timer.set_wait_time(0.2)
 	$Body/HeroSword/CollisionShape2D.disabled = true
 	
 	gravity = 2 * max_jump_hight / pow(jump_duration,2)
@@ -64,6 +66,7 @@ func _on_HeroSwordTimer_timeout() -> void:
 	$Body/HeroSword/AnimatedSprite.stop()
 	$Body/HeroSword/AnimatedSprite.set_frame(0)
 	$Body/HeroSword/CollisionShape2D.disabled = true
+	attacking = false
 
 
 
@@ -142,15 +145,14 @@ func _input(event: InputEvent) -> void: #jump
 		set_collision_mask_bit(7, false)
 	else:
 		set_collision_mask_bit(7, true)
-	
+
+
 func movement():
 	is_grounded = !is_jumping && _check_is_grounded()
 	if is_jumping && player_velocity.y >= 0:
 		is_jumping = false
 	dash()
 	player_velocity = move_and_slide(player_velocity, UP, SLOPE_STOP)
-	
-
 
 
 
@@ -184,14 +186,18 @@ func _get_h_weight():
 
 
 func animation():
-	if player_velocity.x == 0:
+	if player_velocity.x == 0 and attacking != true:
 		$Body/Sprite.play("IdleNew")
-	elif player_velocity.x != 0:
+	elif player_velocity.x != 0 and attacking != true:
 		$Body/Sprite.play("RunNew")
+	elif attacking == true:
+		$Body/Sprite.play("NewAttack")
 
 
 func hero_sword_attack():#sword attack
 	if Input.is_action_just_pressed("left mouse button"):
+		attacking = true
+		#$Body/Sprite.play("NewAttack")
 		if $Body/Sprite.flip_h == false:
 			$Body/HeroSword/AnimatedSprite.play()
 			$Body/HeroSword/CollisionShape2D.disabled = false
@@ -378,7 +384,7 @@ func weapon_show():
 		$Body/HeroSword.hide()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 1:
-		$Body/HeroSword.show()
+		#$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 2:
 		$Body/HeroSword.hide()
@@ -432,9 +438,6 @@ func health_update():
 func die():
 	queue_free()
 	get_tree().change_scene("res://scenes/UI/Windows/GameOver.tscn")
-
-
-
 
 
 
