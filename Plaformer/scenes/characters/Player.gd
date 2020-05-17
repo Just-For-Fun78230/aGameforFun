@@ -440,13 +440,5 @@ func die():
 	get_tree().change_scene("res://scenes/UI/Windows/GameOver.tscn")
 
 
-var running
-var idle
-var jumoing
-var falling
-var _attacking
-func _state():
-	
-	
 
 
