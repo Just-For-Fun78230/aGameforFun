@@ -18,7 +18,7 @@ func _on_MiniCanonBall_body_entered(_body: Node) -> void:
 func _on_VisibilityEnabler2D_screen_exited() -> void:
 	queue_free()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	translate(ball_velocity)
 
 

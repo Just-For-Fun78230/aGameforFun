@@ -9,7 +9,7 @@ func _ready() -> void:
 	$AnimatedSprite.play("Idle")
 	timer.set_wait_time(.5)
 
-func _on_Trampolin_area_entered(area: Area2D) -> void:
+func _on_Trampolin_area_entered(_area: Area2D) -> void:
 	$AnimatedSprite.play("InUse")
 	timer.start()
 

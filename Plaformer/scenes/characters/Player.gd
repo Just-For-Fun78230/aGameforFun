@@ -88,7 +88,7 @@ func _on_enemyDetector_area_entered(area: Area2D) -> void:
 	player_health -= area.dammage
 
 
-func _on_DeathTileMaps_body_entered(body: Node) -> void:
+func _on_DeathTileMaps_body_entered(_body: Node) -> void:
 	die()
 
 
@@ -440,6 +440,13 @@ func die():
 	get_tree().change_scene("res://scenes/UI/Windows/GameOver.tscn")
 
 
-
+var running
+var idle
+var jumoing
+var falling
+var _attacking
+func _state():
+	
+	
 
 
