@@ -5,7 +5,11 @@ extends KinematicBody2D
 
 const DAGGER = preload("res://scenes/weapons/Dagger.tscn")
 const UP = Vector2(0, -1)
-const SLOPE_STOP = 64
+const SNAP_DIRECTION = Vector2.DOWN
+const SNAP_LENGHT = 14.0
+const FLOOR_MAX_ANGLE = deg2rad(46)
+
+
 
 onready var raycasts = $Raycasts
 onready var raycasts_sides= $RaycastsSide
@@ -27,7 +31,7 @@ var move_speed = 8 * 16
 var player_velocity = Vector2(0,0)
 var weapon_choice : int
 var on_wall = false
-var can_dash = true
+var snap_vector = SNAP_DIRECTION * SNAP_LENGHT
 
 var is_grounded
 var is_jumping = false
@@ -40,7 +44,8 @@ var max_jump_hight = 2.25 * Global.UNIT_SIZE
 var min_jump_hight = 0.8 * Global.UNIT_SIZE
 var jump_duration = 0.6
 
-
+var can_dash = true
+var can_wall_slide = true
 
 
 func _ready() -> void:
@@ -121,7 +126,7 @@ func apply_gravity(delta):
 	player_velocity.y += gravity * delta
 	if !check_on_wall():
 		player_velocity.y = min(player_velocity.y, 600)
-	elif check_on_wall():
+	elif check_on_wall() and can_wall_slide == true:
 		player_velocity.y = min(player_velocity.y, 10)
 		
 
@@ -152,7 +157,10 @@ func movement():
 	if is_jumping && player_velocity.y >= 0:
 		is_jumping = false
 	dash()
-	player_velocity = move_and_slide(player_velocity, UP, SLOPE_STOP)
+	if Input.is_action_just_pressed("jump"):
+		player_velocity = move_and_slide(player_velocity, UP)
+	elif !Input.is_action_just_pressed("jump"):
+		player_velocity.y = move_and_slide_with_snap(player_velocity, snap_vector, UP, true, 4, FLOOR_MAX_ANGLE).y
 
 
 

@@ -19,23 +19,23 @@ func change_state():
 	if idle == true:
 		if get_parent().player_velocity.y != 0:
 			return "Jump" 
-		elif get_parent().player_velocity.x != 0 and get_parent().player_velocity.y == 0:
+		elif (get_parent().player_velocity.x > 3 or get_parent().player_velocity.x < -3):
 			return "Run"
-		elif Input.is_action_just_pressed("left mouse button"):
+		elif Input.is_action_just_pressed("left mouse button") and get_parent().weapon_choice == 1:
 			return "Attack"
 	elif run == true:
 		if get_parent().player_velocity.y != 0:
 			return "Jump" 
-		elif get_parent().player_velocity.x == 0 and get_parent().player_velocity.y == 0:
+		elif get_parent().player_velocity.x <= 3 and get_parent().player_velocity.x >= -3 and get_parent().player_velocity.y == 0:
 			return "Idle"
-		elif Input.is_action_just_pressed("left mouse button"):
+		elif Input.is_action_just_pressed("left mouse button") and get_parent().weapon_choice == 1:
 			return "Attack"
 	elif jump == true:
 		if get_parent().player_velocity.y == 0 and get_parent().player_velocity.x == 0:
 			return "Idle" 
 		elif get_parent().player_velocity.x != 0 and get_parent().player_velocity.y == 0:
 			return "Run"
-		elif Input.is_action_just_pressed("left mouse button"):
+		elif Input.is_action_just_pressed("left mouse button") and get_parent().weapon_choice == 1:
 			return "Attack"
 	elif attack == true:
 		if Input.is_action_just_released("left mouse button"):

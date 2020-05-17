@@ -43,15 +43,15 @@ animations = [ {
 "name": "Idle",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "RunNew",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Run",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "RunNew",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

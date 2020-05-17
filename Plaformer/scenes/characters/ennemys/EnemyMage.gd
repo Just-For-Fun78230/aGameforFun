@@ -4,7 +4,7 @@ extends Actors
 var FIREBALL = preload("res://scenes/weapons/Ennemys/Projectiles/Fireball.tscn")
 
 onready var fireball_timer = $FireballTimer
-onready var raycasts = $Raycasts
+
 
 var ennemy_health := 50
 var can_shoot := true

@@ -12,9 +12,6 @@
 
 [node name="Tutorial" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 209.626, 200.153 )
-
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="DirtTileMap" parent="TileMaps" instance=ExtResource( 2 )]
@@ -36,6 +33,9 @@ position = Vector2( -199.815, 487.867 )
 
 [node name="Trampolin" type="Node" parent="TileMaps"]
 
+[node name="Player" parent="TileMaps" instance=ExtResource( 4 )]
+position = Vector2( 209.626, 200.153 )
+
 [node name="PickUps" type="Node" parent="."]
 
 [node name="Key" type="Node" parent="PickUps"]
@@ -47,6 +47,9 @@ position = Vector2( -95.2971, 455.614 )
 
 [node name="MeanBoar" parent="Ennemies" instance=ExtResource( 6 )]
 position = Vector2( 1206.66, 495.932 )
+
+[node name="MeanBoar2" parent="Ennemies" instance=ExtResource( 6 )]
+position = Vector2( 1412.49, 158.524 )
 
 [node name="EnemyMage" parent="Ennemies" instance=ExtResource( 9 )]
 position = Vector2( 275.782, 535.484 )
