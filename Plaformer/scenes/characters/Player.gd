@@ -186,11 +186,11 @@ func _get_h_weight():
 
 
 func animation():
-	if player_velocity.x == 0 and attacking != true:
+	if $PlayerStates.state == "Idle":
 		$Body/Sprite.play("IdleNew")
-	elif player_velocity.x != 0 and attacking != true:
+	if $PlayerStates.state == "Run":
 		$Body/Sprite.play("RunNew")
-	elif attacking == true:
+	elif $PlayerStates.state == "Attack":
 		$Body/Sprite.play("NewAttack")
 
 
@@ -438,7 +438,5 @@ func health_update():
 func die():
 	queue_free()
 	get_tree().change_scene("res://scenes/UI/Windows/GameOver.tscn")
-
-
 
 
