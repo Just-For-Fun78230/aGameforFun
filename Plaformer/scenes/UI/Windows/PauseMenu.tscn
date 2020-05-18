@@ -50,6 +50,16 @@ margin_right = 40.0
 margin_bottom = 14.0
 text = "Resume"
 
+[node name="Save" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Resume"
+
+[node name="Load" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Resume"
+
 [node name="Menu" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 40.0
@@ -57,4 +67,6 @@ margin_bottom = 38.0
 text = "Menu"
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Save" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Load" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Menu" to="." method="_on_Menu_pressed"]
