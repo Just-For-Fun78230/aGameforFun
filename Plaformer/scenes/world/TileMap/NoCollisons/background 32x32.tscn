@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://art/world/Background/Cave/StoneMiddle.png" type="Texture" id=1]
+[ext_resource path="res://art/world/Background/Cave/Background.png" type="Texture" id=1]
 
 [sub_resource type="TileSet" id=1]
-0/name = "StoneMiddle.png 0"
+0/name = "Background.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 16, 16 )
+0/region = Rect2( 0, 0, 32, 32 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
@@ -18,7 +18,8 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[node name="Stonebackground" type="TileMap"]
+[node name="background 32x32" type="TileMap"]
+scale = Vector2( 0.5, 0.5 )
 tile_set = SubResource( 1 )
-cell_size = Vector2( 16, 16 )
+cell_size = Vector2( 32, 32 )
 format = 1
