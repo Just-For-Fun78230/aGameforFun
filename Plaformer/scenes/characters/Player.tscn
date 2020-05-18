@@ -88,9 +88,9 @@ script = ExtResource( 2 )
 
 [node name="UI" type="Control" parent="."]
 margin_left = -180.0
-margin_top = -150.0
+margin_top = -99.3853
 margin_right = 180.0
-margin_bottom = 48.0
+margin_bottom = 98.6147
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -110,12 +110,13 @@ __meta__ = {
 }
 
 [node name="PauseMenu" parent="UI" instance=ExtResource( 10 )]
+anchor_top = 0.00147471
 anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 355.0
-margin_bottom = 193.0
+anchor_bottom = 0.00147471
+margin_left = 7.51218
+margin_top = 10.7041
+margin_right = 357.512
+margin_bottom = 198.704
 
 [node name="HealthBar" type="TextureProgress" parent="UI"]
 modulate = Color( 0.278431, 0.984314, 0.0392157, 1 )
@@ -309,9 +310,13 @@ margin_bottom = 32.0
 color = Color( 0, 0, 0, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -51.5348 )
+position = Vector2( 0, -0.528793 )
 current = true
+drag_margin_left = 1.0
 drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+editor_draw_drag_margin = true
 __meta__ = {
 "_edit_group_": true
 }
