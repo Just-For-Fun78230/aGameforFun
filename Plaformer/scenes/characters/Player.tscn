@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://art/characters/player/purbleMainIdle.png" type="Texture" id=1]
 [ext_resource path="res://scenes/characters/Player.gd" type="Script" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://art/characters/player/NewPlayer/MainRun/MainRun2.png" type="Texture" id=23]
 [ext_resource path="res://art/characters/player/NewPlayer/Attack/MainAttackSword.png" type="Texture" id=24]
 [ext_resource path="res://scenes/characters/PlayerStates.gd" type="Script" id=25]
+[ext_resource path="res://art/characters/player/NewPlayer/MainOnWall/mainOnWall.png" type="Texture" id=26]
+[ext_resource path="res://art/characters/player/NewPlayer/MainJumping/MainIdleFrame3.png" type="Texture" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -52,7 +54,20 @@ animations = [ {
 "loop": true,
 "name": "RunNew",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": true,
+"name": "Jumping",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": true,
+"name": "OnWall",
+"speed": 5.0
 } ]
+
+[sub_resource type="OccluderPolygon2D" id=6]
+polygon = PoolVector2Array( -4.61255, 5.49856, 1.80222, 5.78225, 3.8032, 7.15134, 3.47005, 14.1682, 3.33396, 13.9236, 3.74438, 16.7379, 3.66495, 16.7019, 3.21019, 21.9641, 8.27752, 30.8644, 7.82276, 32.0988, 5.93875, 31.644, 1.58604, 25.5373, -2.24693, 25.4073, -6.59964, 32.0988, -9.5231, 31.8389, -6.59964, 23.8481, -6.50189, 23.7747, -5.36529, 15.9223, -5.35014, 16.0004, -5.54609, 9.66059, -6.09065, 7.48233 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.08072, 7.68702 )
@@ -309,6 +324,9 @@ scale = Vector2( 0.64, 0.64 )
 frames = SubResource( 1 )
 animation = "IdleNew"
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Body/Sprite"]
+occluder = SubResource( 6 )
+
 [node name="HeroSword" parent="Body" instance=ExtResource( 9 )]
 position = Vector2( 5.10835, 0 )
 
@@ -393,7 +411,6 @@ collision_mask = 136
 position = Vector2( 0, -5.08646 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-enabled = true
 cast_to = Vector2( 0, 13 )
 collision_mask = 8
 
@@ -408,7 +425,6 @@ collision_mask = 8
 position = Vector2( 0, 5.794 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-enabled = true
 cast_to = Vector2( 0, 13 )
 collision_mask = 8
 
@@ -416,7 +432,6 @@ collision_mask = 8
 position = Vector2( 0, -5.08646 )
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
-enabled = true
 cast_to = Vector2( 0, 13 )
 collision_mask = 8
 
@@ -431,7 +446,6 @@ collision_mask = 8
 position = Vector2( 0, 5.794 )
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
-enabled = true
 cast_to = Vector2( 0, 13 )
 collision_mask = 8
 

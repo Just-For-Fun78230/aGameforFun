@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=8 format=2]
 
 [ext_resource path="res://art/front/Pixeltype.ttf" type="DynamicFontData" id=1]
 
@@ -47,6 +47,9 @@ expand_margin_right = 3.0
 expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 1 )
 
@@ -63,4 +66,13 @@ Button/styles/focus = SubResource( 1 )
 Button/styles/hover = SubResource( 2 )
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 4 )
+Label/colors/font_color = Color( 0.00392157, 0, 0, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = SubResource( 6 )
+Label/styles/normal = null
 VBoxContainer/constants/separation = 10

@@ -152,6 +152,8 @@ func _input(event: InputEvent) -> void: #jump
 		set_collision_mask_bit(7, true)
 
 
+
+
 func movement():
 	is_grounded = !is_jumping && _check_is_grounded()
 	if is_jumping && player_velocity.y >= 0:
@@ -200,6 +202,10 @@ func animation():
 		$Body/Sprite.play("RunNew")
 	elif $PlayerStates.state == "Attack":
 		$Body/Sprite.play("NewAttack")
+	elif $PlayerStates.state == "On Wall":
+		$Body/Sprite.play("OnWall")
+	elif $PlayerStates.state == "Jump":
+		$Body/Sprite.play("Jumping")
 
 
 func hero_sword_attack():#sword attack
