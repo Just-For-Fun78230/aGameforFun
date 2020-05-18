@@ -43,6 +43,8 @@ func change_state():
 			return "Attack"
 		elif get_parent().check_on_wall() and get_parent().is_grounded == false:
 			return "On Wall"
+		elif get_parent().is_grounded:
+			return "Idle"
 	elif attack == true:
 		if Input.is_action_just_released("left mouse button"):
 			return "Idle"
