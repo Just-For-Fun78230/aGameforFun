@@ -17,6 +17,12 @@ __meta__ = {
 "_edit_vertical_guides_": [ 2312.0 ]
 }
 
+[node name="Portals" type="Node" parent="."]
+
+[node name="RedPortal" parent="Portals" instance=ExtResource( 11 )]
+position = Vector2( -32, 128 )
+world_scene = "res://scenes/levels/Main World.tscn"
+
 [node name="Ennemies" type="Node" parent="."]
 
 [node name="MiniShooters" type="Node" parent="Ennemies"]
@@ -112,9 +118,3 @@ position = Vector2( 2648, 296 )
 
 [node name="Key2" parent="Key" instance=ExtResource( 4 )]
 position = Vector2( 200, 616 )
-
-[node name="Portals" type="Node" parent="."]
-
-[node name="RedPortal" parent="Portals" instance=ExtResource( 11 )]
-position = Vector2( -32, 128 )
-world_scene = "res://scenes/levels/Tutorial.tscn"
