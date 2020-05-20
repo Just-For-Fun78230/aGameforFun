@@ -69,4 +69,5 @@ margin_bottom = 86.0
 text = "Menu"
 [connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Menu" to="." method="_on_Menu_pressed"]
