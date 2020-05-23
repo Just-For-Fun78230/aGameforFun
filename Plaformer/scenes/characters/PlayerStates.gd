@@ -67,7 +67,7 @@ func set_state():
 		run = false
 		attack = false
 		on_wall = false
-		print("idle")
+		#print("idle")
 		state = "Idle"
 	elif change_state() == "Run":
 		run = true
@@ -75,7 +75,7 @@ func set_state():
 		idle = false
 		attack = false
 		on_wall = false
-		print("run")
+		#print("run")
 		state = "Run"
 	elif change_state() == "Jump":
 		jump = true
@@ -83,7 +83,7 @@ func set_state():
 		run = false
 		attack = false
 		on_wall = false
-		print("jump")
+		#print("jump")
 		state = "Jump"
 	elif change_state() == "Attack":
 		attack = true
@@ -91,7 +91,7 @@ func set_state():
 		idle = false
 		run = false
 		on_wall = false
-		print("attack")
+		#print("attack")
 		state = "Attack"
 	elif change_state() == "On Wall":
 		attack = false
@@ -99,5 +99,5 @@ func set_state():
 		idle = false
 		run = false
 		on_wall = true
-		print("on wall")
+		#print("on wall")
 		state = "On Wall"

@@ -1,28 +1,129 @@
 extends Actors
 
-
-
-
-var skeleton_max_speed = Vector2(30,0)
-
 onready var raycasts = $Raycasts
+onready var attack_timer = $AttackTimer
+onready var dead_timer = $DeadTimer
 
-func _ready() -> void:
-	pass
-	
+var skeleton_max_speed = Vector2(20,0)
+var states = "Walk"
+var stop_attack = true
+var should_stop_attack
+
+var health = 200
+
+
+func _ready():
+	attack_timer.set_wait_time(1.8)
+	dead_timer.set_wait_time(1)
+
+func _on_PlayerDetect_body_entered(body: Node) -> void:
+	if body.name == "Player":
+		states = "Attack"
+		attack_timer.start()
+		stop_attack = false
+		should_stop_attack = false
+
+
+
+func _on_PlayerDetect_body_exited(body: Node) -> void:
+	if body.name == "Player":
+		should_stop_attack = true
+
+
+func _on_KillDetector_area_exited(area: Area2D) -> void:
+	health -= area.dammage
+
+
+func _on_AttackTimer_timeout() -> void:
+	stop_attack = true
+
+
+func _on_DeadTimer_timeout() -> void:
+	die()
+
 
 func _physics_process(delta: float) -> void:
-	if on_wall():
-		skeleton_max_speed.x = -5
-		self.scale.x *= -1
+	_do(delta)
+	change_state()
+	_health()
+	#print(states)
+
+func _do(delta):
 	skeleton_max_speed.y = gravity * delta
-	skeleton_max_speed = move_and_slide(skeleton_max_speed, FLOOR_NORMAL)
-	
+	if states == "Walk":
+		$AnimationPlayer.play("Walk")
+		show_walk()
+		on_wall()
+		skeleton_max_speed.y = move_and_slide(skeleton_max_speed, FLOOR_NORMAL).y
+		
+	elif states == "Idle":
+		$AnimationPlayer.play("Idle")
+		show_idle()
+	elif states == "Attack":
+		$AnimationPlayer.play("Attack")
+		if $AttackSprite.frame == 7:
+			$Dammage/CollisionShape2D.disabled = false
+		elif $AttackSprite.frame == 13:
+			$Dammage/CollisionShape2D.disabled = true
+		show_attack()
+	elif states == "Dead":
+		$AnimationPlayer.play("Dead")
+		show_dead()
+		if $DeadSprite.frame == 14:
+			$AnimationPlayer.stop()
+			dead_timer.start()
+
 
 func on_wall():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
-			return true
-	return false
+			self.scale.x *= -1
+			skeleton_max_speed.x = -skeleton_max_speed.x
+
+func change_state():
+	if states == "Attack":
+		if should_stop_attack and stop_attack:
+			states = "Walk"
+
+
+func show_idle():
+	$IdleSprite.show()
+	$AttackSprite.hide()
+	$Dammage/CollisionShape2D.disabled = true
+	$WalkSprite.hide()
+
+func show_walk():
+	$IdleSprite.hide()
+	$AttackSprite.hide()
+	$Dammage/CollisionShape2D.disabled = true
+	$WalkSprite.show()
+
+func show_attack():
+	$IdleSprite.hide()
+	$AttackSprite.show()
+	$WalkSprite.hide()
+
+func show_dead():
+	$IdleSprite.hide()
+	$AttackSprite.hide()
+	$WalkSprite.hide()
+	$DeadSprite.show()
+	$CollisionShape2D.disabled = true
+	$PlayerDetect/CollisionShape2D.disabled = true
+	$KillDetector/CollisionShape2D.disabled = true
+	$Dammage/CollisionShape2D.disabled = true
+	$HealthBar.hide()
+
+func _health():
+	$HealthBar.value = health
+	health = $HealthBar.value
+	if health == 0:
+		states = "Dead"
+
+
+func die():
+	queue_free()
+
+
 
 
