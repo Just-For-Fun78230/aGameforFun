@@ -18,6 +18,10 @@
 
 [node name="Tutorial" type="Node2D"]
 
+[node name="RedPortal" parent="." instance=ExtResource( 11 )]
+position = Vector2( -672, 320 )
+world_scene = "res://scenes/levels/Main World.tscn"
+
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="Stonebackground" parent="TileMaps" instance=ExtResource( 13 )]
@@ -66,7 +70,7 @@ tile_data = PoolIntArray( 589869, 0, 0, 589877, 0, 0, 655406, 0, 0, 655412, 0, 0
 
 [node name="WoodPlatform16x16" parent="TileMaps" instance=ExtResource( 10 )]
 cell_size = Vector2( 8, 8 )
-tile_data = PoolIntArray( -458812, 0, 0, 2490282, 2, 0, 2490284, 2, 0, 2555818, 3, 0, 2555821, 3, 0, 2686890, 3, 0, 2686893, 3, 0 )
+tile_data = PoolIntArray( 2490282, 2, 0, 2490284, 2, 0, 2555818, 3, 0, 2555821, 3, 0, 2686890, 3, 0, 2686893, 3, 0 )
 
 [node name="Doors" type="Node" parent="TileMaps"]
 
@@ -148,7 +152,3 @@ position = Vector2( 1412.49, 158.524 )
 
 [node name="EnemyMage" parent="Ennemies" instance=ExtResource( 9 )]
 position = Vector2( 275.782, 535.484 )
-
-[node name="RedPortal" parent="." instance=ExtResource( 11 )]
-position = Vector2( -672, 320 )
-world_scene = "res://scenes/levels/Level1.tscn"

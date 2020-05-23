@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://art/world/Sky.png" type="Texture" id=1]
+[ext_resource path="res://Theme/first.tres" type="Theme" id=2]
+
+[node name="SaveAndLoad" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 360.0
+margin_bottom = 200.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 162.0
+margin_top = 69.0
+margin_right = 198.0
+margin_bottom = 131.0
+
+[node name="Save1" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_right = 36.0
+margin_bottom = 14.0
+text = "Save 1"
+
+[node name="Save2" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 36.0
+margin_bottom = 38.0
+text = "Save 2"
+
+[node name="Save3" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 36.0
+margin_bottom = 62.0
+text = "Save 3"

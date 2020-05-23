@@ -45,7 +45,7 @@ var min_jump_hight = 0.8 * Global.UNIT_SIZE
 var jump_duration = 0.6
 
 var can_dash = true
-var can_wall_slide = true
+
 
 
 func _ready() -> void:
@@ -126,7 +126,7 @@ func apply_gravity(delta):
 	player_velocity.y += gravity * delta
 	if !check_on_wall():
 		player_velocity.y = min(player_velocity.y, 600)
-	elif check_on_wall() and can_wall_slide == true:
+	elif check_on_wall() and Global.can_wall_jump == true:
 		player_velocity.y = min(player_velocity.y, 10)
 		
 
@@ -167,25 +167,34 @@ func movement():
 
 
 func dash():
-	if Input.is_action_just_pressed("shift") && player_velocity.x > 0 && can_dash:
-		player_velocity.x += 1000
-		can_dash = false
-	if Input.is_action_just_pressed("shift") && player_velocity.x < 0 && can_dash:
-		player_velocity.x -= 1000
-		can_dash = false
+	if Global.can_dash:
+		if Input.is_action_just_pressed("shift") && player_velocity.x > 0 && can_dash:
+			player_velocity.x += 1000
+			can_dash = false
+		if Input.is_action_just_pressed("shift") && player_velocity.x < 0 && can_dash:
+			player_velocity.x -= 1000
+			can_dash = false
 
 func _check_is_grounded():
 	for raycast in raycasts.get_children():
 		if raycast.is_colliding():
-			jump_count = 0
-			can_dash = true
+			if Global.can_double_jump and Global.can_dash:
+				jump_count = 0
+				can_dash = true
+			elif Global.can_double_jump and !Global.can_dash:
+				jump_count = 0
+				can_dash = false
+			elif !Global.can_double_jump and !Global.can_dash:
+				jump_count = 1
+				can_dash = false
 			return true
 	return false
 
 func check_on_wall():
 	for raycast in raycasts_sides.get_children():
 		if raycast.is_colliding():
-			jump_count = 0
+			if Global.can_wall_jump:
+				jump_count = 0
 			return true
 	return false
 
@@ -203,7 +212,10 @@ func animation():
 	elif $PlayerStates.state == "Attack":
 		$Body/Sprite.play("NewAttack")
 	elif $PlayerStates.state == "On Wall":
-		$Body/Sprite.play("OnWall")
+		if Global.can_wall_jump:
+			$Body/Sprite.play("OnWall")
+		elif !Global.can_wall_jump:
+			$Body/Sprite.play("Jumping")
 	elif $PlayerStates.state == "Jump":
 		$Body/Sprite.play("Jumping")
 

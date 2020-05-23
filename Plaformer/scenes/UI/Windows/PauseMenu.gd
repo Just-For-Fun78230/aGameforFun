@@ -35,3 +35,7 @@ func _on_Pause_pressed() -> void:
 		pause_state = false
 		get_tree().paused = pause_state
 		$MarginContainer.hide()
+
+
+func _on_Save_pressed() -> void:
+	Global.save_game()
