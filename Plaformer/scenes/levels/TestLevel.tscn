@@ -16,35 +16,7 @@
 [ext_resource path="res://scenes/world/Objects/Trampolin/Trampolin.tscn" type="PackedScene" id=15]
 
 [node name="TestLevel" type="Node2D"]
-
-[node name="ennemys" type="Node" parent="."]
-
-[node name="MiniShooters" type="Node" parent="ennemys"]
-
-[node name="MiniShooterLeft" parent="ennemys/MiniShooters" instance=ExtResource( 4 )]
-position = Vector2( 346.327, 104 )
-rotation = 0.0
-ball_speed_y = 100
-
-[node name="MiniShooterLeft2" parent="ennemys/MiniShooters" instance=ExtResource( 4 )]
-position = Vector2( 280, 160 )
-ball_speed_x = -100
-
-[node name="MiniShooterLeft3" parent="ennemys/MiniShooters" instance=ExtResource( 4 )]
-position = Vector2( 424, 160 )
-rotation = -1.5708
-ball_speed_x = 100
-
-[node name="MiniShooterLeft4" parent="ennemys/MiniShooters" instance=ExtResource( 4 )]
-position = Vector2( 504, 186.057 )
-rotation = 3.14159
-ball_speed_y = -100
-
-[node name="MeanBoar" parent="ennemys" instance=ExtResource( 8 )]
-position = Vector2( 1048, 288 )
-
-[node name="Skeleton" parent="ennemys" instance=ExtResource( 6 )]
-position = Vector2( -128, 48 )
+position = Vector2( 88, 24 )
 
 [node name="Key" type="Node" parent="."]
 
@@ -157,3 +129,32 @@ trampolin_hight_y = -170
 
 [node name="DeathTileMap" parent="TileMaps" instance=ExtResource( 5 )]
 tile_data = PoolIntArray( 852009, 0, 0, 917546, 0, 0, 983083, 0, 0, 1048620, 0, 0 )
+
+[node name="ennemys" type="Node" parent="TileMaps"]
+
+[node name="MiniShooters" type="Node" parent="TileMaps/ennemys"]
+
+[node name="MiniShooterLeft" parent="TileMaps/ennemys/MiniShooters" instance=ExtResource( 4 )]
+position = Vector2( 346.327, 104 )
+rotation = 0.0
+ball_speed_y = 100
+
+[node name="MiniShooterLeft2" parent="TileMaps/ennemys/MiniShooters" instance=ExtResource( 4 )]
+position = Vector2( 280, 160 )
+ball_speed_x = -100
+
+[node name="MiniShooterLeft3" parent="TileMaps/ennemys/MiniShooters" instance=ExtResource( 4 )]
+position = Vector2( 424, 160 )
+rotation = -1.5708
+ball_speed_x = 100
+
+[node name="MiniShooterLeft4" parent="TileMaps/ennemys/MiniShooters" instance=ExtResource( 4 )]
+position = Vector2( 504, 186.057 )
+rotation = 3.14159
+ball_speed_y = -100
+
+[node name="MeanBoar" parent="TileMaps/ennemys" instance=ExtResource( 8 )]
+position = Vector2( 1048, 288 )
+
+[node name="Skeleton" parent="TileMaps/ennemys" instance=ExtResource( 6 )]
+position = Vector2( 80, 176 )
