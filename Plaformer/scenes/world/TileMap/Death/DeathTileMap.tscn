@@ -3,7 +3,7 @@
 [ext_resource path="res://art/world/tiles/Death/PicksOne.png" type="Texture" id=1]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+points = PoolVector2Array( 0, 16, 32, 16, 32, 32, 0, 32 )
 
 [sub_resource type="TileSet" id=2]
 0/name = "PicksOne.png 0"
