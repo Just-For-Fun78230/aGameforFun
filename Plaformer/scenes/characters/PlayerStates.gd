@@ -8,7 +8,7 @@ var run
 var jump
 var attack
 var fall
-var on_wall
+var wall_slide
 
 
 func _process(_delta: float) -> void:
@@ -42,13 +42,13 @@ func change_state():
 		elif Input.is_action_just_pressed("left mouse button") and get_parent().weapon_choice == 1:
 			return "Attack"
 		elif get_parent().check_on_wall() and get_parent().is_grounded == false:
-			return "On Wall"
+			return "WallSlide"
 		elif get_parent().is_grounded:
 			return "Idle"
 	elif attack == true:
 		if Input.is_action_just_released("left mouse button"):
 			return "Idle"
-	elif on_wall == true:
+	elif wall_slide == true:
 		if get_parent().player_velocity.y != 0 and get_parent().check_on_wall() == false:
 			return "Jump" 
 		elif (get_parent().player_velocity.x > 3 or get_parent().player_velocity.x < -3) and get_parent().is_grounded:
@@ -66,7 +66,7 @@ func set_state():
 		jump = false
 		run = false
 		attack = false
-		on_wall = false
+		wall_slide = false
 		#print("idle")
 		state = "Idle"
 	elif change_state() == "Run":
@@ -74,7 +74,7 @@ func set_state():
 		jump = false
 		idle = false
 		attack = false
-		on_wall = false
+		wall_slide = false
 		#print("run")
 		state = "Run"
 	elif change_state() == "Jump":
@@ -82,7 +82,7 @@ func set_state():
 		idle = false
 		run = false
 		attack = false
-		on_wall = false
+		wall_slide = false
 		#print("jump")
 		state = "Jump"
 	elif change_state() == "Attack":
@@ -90,14 +90,14 @@ func set_state():
 		jump = false
 		idle = false
 		run = false
-		on_wall = false
+		wall_slide = false
 		#print("attack")
 		state = "Attack"
-	elif change_state() == "On Wall":
+	elif change_state() == "WallSlide":
 		attack = false
 		jump = false
 		idle = false
 		run = false
-		on_wall = true
+		wall_slide = true
 		#print("on wall")
-		state = "On Wall"
+		state = "WallSlide"

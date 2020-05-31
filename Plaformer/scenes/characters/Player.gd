@@ -206,14 +206,17 @@ func _get_h_weight():
 
 func animation():
 	if $PlayerStates.state == "Idle":
-		$Body/Sprite.play("IdleNew")
+		#$Body/Sprite.play("Idle")
+		$Body/AnimationPlayer.play("Idle")
 	if $PlayerStates.state == "Run":
-		$Body/Sprite.play("RunNew")
+		#$Body/Sprite.play("Run")
+		$Body/AnimationPlayer.play("Run")
 	elif $PlayerStates.state == "Attack":
-		$Body/Sprite.play("NewAttack")
-	elif $PlayerStates.state == "On Wall":
+		#$Body/Sprite.play("Attack")
+		$Body/AnimationPlayer.play("Attack")
+	elif $PlayerStates.state == "WallSlide":
 		if Global.can_wall_jump:
-			$Body/Sprite.play("OnWall")
+			$Body/Sprite.play("WallSlide")
 		elif !Global.can_wall_jump:
 			$Body/Sprite.play("Jumping")
 	elif $PlayerStates.state == "Jump":
