@@ -35,6 +35,11 @@ animations = [ {
 "name": "Idle",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 24 ), ExtResource( 24 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "NewAttack",
@@ -50,20 +55,15 @@ animations = [ {
 "name": "OnWall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 22 ) ],
-"loop": true,
-"name": "RunNew",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 27 ) ],
 "loop": true,
 "name": "Jumping",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 22 ) ],
 "loop": true,
-"name": "Run",
-"speed": 5.0
+"name": "RunNew",
+"speed": 10.0
 } ]
 
 [sub_resource type="OccluderPolygon2D" id=2]
