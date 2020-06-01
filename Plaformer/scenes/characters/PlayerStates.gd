@@ -24,7 +24,7 @@ func change_state():
 		elif Input.is_action_just_pressed("left mouse button") and get_parent().weapon_choice == 1:
 			return "Attack"
 		elif get_parent().check_on_wall() and get_parent().is_grounded == false:
-			return "On Wall"
+			return "WallSlide"
 	elif run == true:
 		if !get_parent().is_grounded and get_parent().check_on_wall() == false and get_parent().player_velocity.y != 0:
 			return "Jump" 
@@ -33,7 +33,7 @@ func change_state():
 		elif Input.is_action_just_pressed("left mouse button") and get_parent().weapon_choice == 1:
 			return "Attack"
 		elif get_parent().check_on_wall() and get_parent().is_grounded == false:
-			return "On Wall"
+			return "WallSlide"
 	elif jump == true:
 		if get_parent().is_grounded and get_parent().player_velocity.x <= 3 and get_parent().player_velocity.x >= -3:
 			return "Idle" 

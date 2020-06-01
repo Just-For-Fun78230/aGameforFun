@@ -8,6 +8,7 @@ var skeleton_max_speed = Vector2(20,0)
 var states = "Walk"
 var stop_attack = true
 var should_stop_attack
+var sea_player = false
 
 var health = 200
 
@@ -22,6 +23,7 @@ func _on_PlayerDetect_body_entered(body: Node) -> void:
 		attack_timer.start()
 		stop_attack = false
 		should_stop_attack = false
+		sea_player = true
 
 
 

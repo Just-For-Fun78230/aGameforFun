@@ -32,6 +32,7 @@ var player_velocity = Vector2(0,0)
 var weapon_choice : int
 var on_wall = false
 var snap_vector = SNAP_DIRECTION * SNAP_LENGHT
+var can_change = true
 
 var is_grounded
 var is_jumping = false
@@ -50,8 +51,8 @@ var can_dash = true
 
 func _ready() -> void:
 	dagger_timer.set_wait_time(0.5)
-	hero_sword_timer.set_wait_time(0.2)
-	$Body/HeroSword/CollisionShape2D.disabled = true
+	hero_sword_timer.set_wait_time(0.4)
+	$Body/SwordCollison/CollisionPolygon2D.disabled = true
 	
 	gravity = 2 * max_jump_hight / pow(jump_duration,2)
 	max_jump_velocity = -sqrt(2 * gravity * max_jump_hight)
@@ -68,10 +69,8 @@ func _on_DaggerTimer_timeout() -> void:
 	can_shoot = true
 
 func _on_HeroSwordTimer_timeout() -> void:
-	$Body/HeroSword/AnimatedSprite.stop()
-	$Body/HeroSword/AnimatedSprite.set_frame(0)
-	$Body/HeroSword/CollisionShape2D.disabled = true
-	attacking = false
+	can_change = true
+	$Body/SwordCollison/CollisionPolygon2D.disabled = true
 
 
 
@@ -128,7 +127,7 @@ func apply_gravity(delta):
 		player_velocity.y = min(player_velocity.y, 600)
 	elif check_on_wall() and Global.can_wall_jump == true:
 		player_velocity.y = min(player_velocity.y, 10)
-		
+
 
 func _get_input():
 	var move_direction = -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
@@ -205,32 +204,28 @@ func _get_h_weight():
 
 
 func animation():
-	if $PlayerStates.state == "Idle":
-		#$Body/Sprite.play("Idle")
-		$Body/AnimationPlayer.play("Idle")
-	if $PlayerStates.state == "Run":
-		#$Body/Sprite.play("Run")
-		$Body/AnimationPlayer.play("Run")
-	elif $PlayerStates.state == "Attack":
-		#$Body/Sprite.play("Attack")
-		$Body/AnimationPlayer.play("Attack")
-	elif $PlayerStates.state == "WallSlide":
-		if Global.can_wall_jump:
-			$Body/Sprite.play("WallSlide")
-		elif !Global.can_wall_jump:
-			$Body/Sprite.play("Jumping")
-	elif $PlayerStates.state == "Jump":
-		$Body/Sprite.play("Jumping")
+	if can_change:
+		if $PlayerStates.state == "Idle":
+			$Body/AnimationPlayer.play("Idle")
+		if $PlayerStates.state == "Run":
+			$Body/AnimationPlayer.play("Run")
+		elif $PlayerStates.state == "Attack":
+			hero_sword_attack()
+		elif $PlayerStates.state == "WallSlide":
+			if Global.can_wall_jump:
+				$Body/AnimationPlayer.play("WallSlide")
+			elif !Global.can_wall_jump:
+				$Body/Sprite.play("Jumping")
+		elif $PlayerStates.state == "Jump":
+			$Body/AnimationPlayer.play("Jump")
+
 
 
 func hero_sword_attack():#sword attack
-	if Input.is_action_just_pressed("left mouse button"):
-		attacking = true
-		#$Body/Sprite.play("NewAttack")
-		if $Body/Sprite.flip_h == false:
-			$Body/HeroSword/AnimatedSprite.play()
-			$Body/HeroSword/CollisionShape2D.disabled = false
-		hero_sword_timer.start()
+	hero_sword_timer.start()
+	$Body/AnimationPlayer.play("Attack")
+	can_change = false
+	$Body/SwordCollison/CollisionPolygon2D.disabled = false
 
 
 func dagger_fire():
@@ -410,37 +405,27 @@ func weapon_equiped():
 
 func weapon_show():
 	if weapon_choice == 0:
-		$Body/HeroSword.hide()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 1:
-		#$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 2:
-		$Body/HeroSword.hide()
 		if dagger_number != 0:
 			$Body/DaggerSprite.show()
 		else:
 			$Body/DaggerSprite.hide()
 	elif weapon_choice == 3:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 4:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 5:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 6:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 7:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 8:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 	elif weapon_choice == 9:
-		$Body/HeroSword.show()
 		$Body/DaggerSprite.hide()
 
 func _key():
@@ -454,8 +439,7 @@ func attack():
 		if Input.is_action_just_pressed("left mouse button"):
 			dagger_fire()
 			dagger_deacrease()
-	elif weapon_choice == 1:
-			hero_sword_attack()
+
 
 func health_update():
 	$UI/HealthBar.value = player_health 
