@@ -8,7 +8,7 @@
 [ext_resource path="res://art/world/Sky.png" type="Texture" id=6]
 [ext_resource path="res://art/UI/Lifebar/behind.png" type="Texture" id=7]
 [ext_resource path="res://art/UI/Lifebar/Over.png" type="Texture" id=8]
-[ext_resource path="res://scenes/weapons/Hero/sword_lance/HeroSword.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/characters/SwordCollisonPlayer.gd" type="Script" id=9]
 [ext_resource path="res://scenes/UI/Windows/PauseMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://art/UI/Lifebar/inFront.png" type="Texture" id=11]
 [ext_resource path="res://art/UI/Pause.png" type="Texture" id=12]
@@ -51,24 +51,24 @@ animations = [ {
 "name": "Jumping",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 3 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "Run",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 22 ) ],
 "loop": true,
 "name": "RunNew",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 3 ), ExtResource( 32 ) ],
 "loop": true,
-"name": "WallSlide",
-"speed": 5.0
+"name": "Run",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 28 ), ExtResource( 33 ) ],
 "loop": true,
 "name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "WallSlide",
 "speed": 5.0
 } ]
 
@@ -139,7 +139,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=7]
 resource_name = "WallSlide"
 length = 0.2
 tracks/0/type = "value"
@@ -155,16 +155,16 @@ tracks/0/keys = {
 "values": [ 79, 80 ]
 }
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5.08072, 7.68702 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10.0334, 10.3747 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 5.64077, 8.34889 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 4.91546, 1.88923 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -201,10 +201,6 @@ visible = false
 position = Vector2( 0.701135, -16.4066 )
 occluder = SubResource( 2 )
 
-[node name="HeroSword" parent="Body" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 5.10835, 0 )
-
 [node name="DaggerSprite" type="Sprite" parent="Body"]
 position = Vector2( 0, 1.794 )
 scale = Vector2( 0.25, 0.25 )
@@ -222,14 +218,22 @@ scale = Vector2( 0.64, 0.64 )
 texture = ExtResource( 38 )
 vframes = 12
 hframes = 8
-frame = 42
+frame = 44
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 anims/Attack = SubResource( 3 )
 anims/Idle = SubResource( 4 )
 anims/Jump = SubResource( 5 )
 anims/Run = SubResource( 6 )
-anims/WallSlide = SubResource( 11 )
+anims/WallSlide = SubResource( 7 )
+
+[node name="SwordCollison" type="Area2D" parent="Body"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource( 9 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/SwordCollison"]
+polygon = PoolVector2Array( 3.70461, -13.9196, 13.0919, -10.534, 15.4772, -6.37896, 15.4772, -1.53141, 7.70576, 6.24006, 0.934582, 6.16311, 7.39798, -0.685013, 7.70576, -5.07089, 1.70403, -10.6879, -1.7585, -11.0726 )
 
 [node name="UI" type="Control" parent="."]
 margin_left = -180.0
@@ -258,9 +262,9 @@ __meta__ = {
 anchor_top = 0.00147471
 anchor_right = 0.0
 anchor_bottom = 0.00147471
-margin_left = 7.20589
+margin_left = 7.12894
 margin_top = 5.9104
-margin_right = 357.206
+margin_right = 357.129
 margin_bottom = 193.91
 
 [node name="HealthBar" type="TextureProgress" parent="UI"]
@@ -457,7 +461,7 @@ color = Color( 0, 0, 0, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 0.262599 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="enemyDetector" type="Area2D" parent="."]
 visible = false
@@ -466,7 +470,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemyDetector"]
 self_modulate = Color( 0.266667, 0.00392157, 1, 1 )
 scale = Vector2( 0.55, 0.8 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="DaggerSpawnPosition" type="Position2D" parent="."]
 position = Vector2( 0, 1.794 )
@@ -488,7 +492,7 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
 visible = false
 modulate = Color( 0.027451, 0.027451, 0.027451, 1 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Timer" type="Node" parent="."]
 
@@ -572,7 +576,7 @@ collision_mask = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathTileMaps"]
 visible = false
 position = Vector2( 0, 8.26372 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="PlayerStates" type="Node" parent="."]
 script = ExtResource( 25 )
