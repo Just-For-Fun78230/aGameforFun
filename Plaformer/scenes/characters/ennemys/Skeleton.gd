@@ -8,7 +8,7 @@ var skeleton_max_speed = Vector2(20,0)
 var states = "Walk"
 var stop_attack = true
 var should_stop_attack
-var sea_player = false
+var see_player = false
 
 var health = 200
 
@@ -16,6 +16,8 @@ var health = 200
 func _ready():
 	attack_timer.set_wait_time(1.8)
 	dead_timer.set_wait_time(1)
+	$FollowPlayer/FollowFront.disabled = true
+	$FollowPlayer/FollowBehind.disabled = true
 
 func _on_PlayerDetect_body_entered(body: Node) -> void:
 	if body.name == "Player":
@@ -23,7 +25,7 @@ func _on_PlayerDetect_body_entered(body: Node) -> void:
 		attack_timer.start()
 		stop_attack = false
 		should_stop_attack = false
-		sea_player = true
+		see_player = true
 
 
 
@@ -74,7 +76,12 @@ func _do(delta):
 		if $DeadSprite.frame == 14:
 			$AnimationPlayer.stop()
 			dead_timer.start()
-
+	elif states == "Follow":
+		$FollowPlayer/FollowFront.disabled = false
+		$FollowPlayer/FollowBehind.disabled = false
+		$AnimationPlayer.play("Walk")
+		show_walk()
+		skeleton_max_speed.y = move_and_slide(skeleton_max_speed, FLOOR_NORMAL).y
 
 func on_wall():
 	for raycast in raycasts.get_children():
@@ -86,6 +93,9 @@ func change_state():
 	if states == "Attack":
 		if should_stop_attack and stop_attack:
 			states = "Walk"
+	elif states == "Walk":
+		if see_player:
+			states = "Follow"
 
 
 func show_idle():
