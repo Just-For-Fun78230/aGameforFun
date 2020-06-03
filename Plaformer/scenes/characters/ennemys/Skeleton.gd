@@ -16,8 +16,6 @@ var health = 200
 func _ready():
 	attack_timer.set_wait_time(1.8)
 	dead_timer.set_wait_time(1)
-	$FollowPlayer/FollowFront.disabled = true
-	$FollowPlayer/FollowBehind.disabled = true
 
 func _on_PlayerDetect_body_entered(body: Node) -> void:
 	if body.name == "Player":
@@ -77,10 +75,12 @@ func _do(delta):
 			$AnimationPlayer.stop()
 			dead_timer.start()
 	elif states == "Follow":
-		$FollowPlayer/FollowFront.disabled = false
-		$FollowPlayer/FollowBehind.disabled = false
 		$AnimationPlayer.play("Walk")
 		show_walk()
+		if Global.player_position_x > self.get_position().x:
+			skeleton_max_speed.x = 20
+		elif Global.player_position_x < self.get_position().x:
+			skeleton_max_speed.x = -20
 		skeleton_max_speed.y = move_and_slide(skeleton_max_speed, FLOOR_NORMAL).y
 
 func on_wall():

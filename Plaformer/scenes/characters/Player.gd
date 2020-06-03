@@ -118,6 +118,9 @@ func _physics_process(delta: float) -> void:
 	attack()
 	
 	health_update()
+	
+	
+	Global.player_position_x = self.get_position().x 
 
 
 

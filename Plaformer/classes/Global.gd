@@ -7,6 +7,7 @@ var can_double_jump = false
 var can_wall_jump = false
 var can_dash = false
 
+var player_position_x
 
 
 func save_game():
