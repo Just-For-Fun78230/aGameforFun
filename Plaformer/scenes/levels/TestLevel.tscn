@@ -157,4 +157,4 @@ ball_speed_y = -100
 position = Vector2( 1048, 288 )
 
 [node name="Skeleton" parent="TileMaps/ennemys" instance=ExtResource( 6 )]
-position = Vector2( 80, 176 )
+position = Vector2( 136, 120.357 )

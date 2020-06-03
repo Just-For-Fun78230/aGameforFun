@@ -17,6 +17,7 @@ func _ready():
 	attack_timer.set_wait_time(1.8)
 	dead_timer.set_wait_time(1)
 
+
 func _on_PlayerDetect_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		states = "Attack"
@@ -49,13 +50,14 @@ func _on_VisibilityEnabler2D_screen_exited() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	skeleton_max_speed.y = gravity * delta
 	_do(delta)
 	change_state()
 	_health()
 	#print(states)
 
 func _do(delta):
-	skeleton_max_speed.y = gravity * delta
+
 	if states == "Walk":
 		$AnimationPlayer.play("Walk")
 		show_walk()
@@ -146,6 +148,7 @@ func _health():
 
 func die():
 	queue_free()
+
 
 
 

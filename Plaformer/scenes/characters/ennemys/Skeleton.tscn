@@ -11,7 +11,7 @@
 [ext_resource path="res://art/characters/Enemys/Skeleton/Skeleton Dead.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 12.4232 )
+extents = Vector2( 3.88955, 12.4232 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
@@ -130,14 +130,12 @@ hframes = 15
 
 [node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
 rotation = -1.5708
-enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
 position = Vector2( 0, 8.34245 )
 rotation = -1.5708
-enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 8
 
@@ -192,6 +190,7 @@ wait_time = 1.8
 one_shot = true
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
 position = Vector2( -2.0783, 1.13362 )
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]
