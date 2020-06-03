@@ -86,9 +86,13 @@ extents = Vector2( 8.21481, 12.084 )
 extents = Vector2( 6.63691, 3.71368 )
 
 [node name="Skeleton" type="KinematicBody2D"]
+position = Vector2( 3.13151, 0 )
 collision_layer = 2
 collision_mask = 8
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.85393, 3.56742 )
@@ -186,8 +190,12 @@ one_shot = true
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 1.8
 one_shot = true
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( -2.0783, 1.13362 )
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]
 [connection signal="area_exited" from="KillDetector" to="." method="_on_KillDetector_area_exited"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]

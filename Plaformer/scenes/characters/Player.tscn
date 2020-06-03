@@ -183,7 +183,7 @@ position = Vector2( -0.110371, -3.80177 )
 scale = Vector2( 0.64, 0.64 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Body/Sprite"]

@@ -44,6 +44,10 @@ func _on_DeadTimer_timeout() -> void:
 	die()
 
 
+func _on_VisibilityEnabler2D_screen_exited() -> void:
+	states = "Walk"
+
+
 func _physics_process(delta: float) -> void:
 	_do(delta)
 	change_state()
@@ -75,12 +79,19 @@ func _do(delta):
 			$AnimationPlayer.stop()
 			dead_timer.start()
 	elif states == "Follow":
+		var old_speed
 		$AnimationPlayer.play("Walk")
 		show_walk()
 		if Global.player_position_x > self.get_position().x:
+			old_speed = skeleton_max_speed.x
 			skeleton_max_speed.x = 20
+			if old_speed != skeleton_max_speed.x:
+				self.scale.x *= -1
 		elif Global.player_position_x < self.get_position().x:
+			old_speed = skeleton_max_speed.x
 			skeleton_max_speed.x = -20
+			if old_speed != skeleton_max_speed.x:
+				self.scale.x *= -1
 		skeleton_max_speed.y = move_and_slide(skeleton_max_speed, FLOOR_NORMAL).y
 
 func on_wall():
@@ -135,7 +146,6 @@ func _health():
 
 func die():
 	queue_free()
-
 
 
 
