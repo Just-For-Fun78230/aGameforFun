@@ -10,8 +10,9 @@
 [ext_resource path="res://scenes/characters/ennemys/DammageSkeleton.gd" type="Script" id=8]
 [ext_resource path="res://art/characters/Enemys/Skeleton/Skeleton Dead.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.88955, 12.4232 )
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 5.82985
+height = 12.6955
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
@@ -90,13 +91,10 @@ position = Vector2( 3.13151, 0 )
 collision_layer = 2
 collision_mask = 8
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.85393, 3.56742 )
-shape = SubResource( 1 )
+position = Vector2( -3.66867, 3.88078 )
+shape = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Walk"
@@ -130,13 +128,15 @@ hframes = 15
 
 [node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
 rotation = -1.5708
-cast_to = Vector2( 0, 10 )
+enabled = true
+cast_to = Vector2( 0, 5 )
 collision_mask = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
 position = Vector2( 0, 8.34245 )
 rotation = -1.5708
-cast_to = Vector2( 0, 10 )
+enabled = true
+cast_to = Vector2( 0, 5 )
 collision_mask = 8
 
 [node name="PlayerDetect" type="Area2D" parent="."]

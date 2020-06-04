@@ -138,10 +138,13 @@ tile_data = PoolIntArray( 852009, 0, 0, 917546, 0, 0, 983083, 0, 0, 1048620, 0, 
 position = Vector2( 346.327, 104 )
 rotation = 0.0
 ball_speed_y = 100
+ball_time = 0.1
 
 [node name="MiniShooterLeft2" parent="TileMaps/ennemys/MiniShooters" instance=ExtResource( 4 )]
 position = Vector2( 280, 160 )
 ball_speed_x = -100
+ball_scale_x = 1.0
+ball_scale_y = 1.0
 
 [node name="MiniShooterLeft3" parent="TileMaps/ennemys/MiniShooters" instance=ExtResource( 4 )]
 position = Vector2( 424, 160 )
@@ -157,4 +160,4 @@ ball_speed_y = -100
 position = Vector2( 1048, 288 )
 
 [node name="Skeleton" parent="TileMaps/ennemys" instance=ExtResource( 6 )]
-position = Vector2( 136, 120.357 )
+position = Vector2( 896, 272.705 )
