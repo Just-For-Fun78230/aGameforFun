@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/characters/ennemys/DammageSkeleton.gd" type="Script" id=8]
 [ext_resource path="res://art/characters/Enemys/Skeleton/Skeleton Dead.png" type="Texture" id=9]
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 5.82985
 height = 12.6955
 
@@ -94,7 +94,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.66867, 3.88078 )
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Walk"
