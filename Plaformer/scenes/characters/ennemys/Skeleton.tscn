@@ -129,14 +129,14 @@ hframes = 15
 [node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
 rotation = -1.5708
 enabled = true
-cast_to = Vector2( 0, 5 )
+cast_to = Vector2( 0, 10 )
 collision_mask = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
 position = Vector2( 0, 8.34245 )
 rotation = -1.5708
 enabled = true
-cast_to = Vector2( 0, 5 )
+cast_to = Vector2( 0, 10 )
 collision_mask = 8
 
 [node name="PlayerDetect" type="Area2D" parent="."]
