@@ -22,7 +22,12 @@ func _on_ChangeDirectionTimer_timeout() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if can_change_direction or is_on_wall() or is_on_ceiling() or is_on_floor():
-		state = floor(rand_range(0,8))
+		if is_on_ceiling():
+			state = floor(rand_range(7,8))
+		elif is_on_floor():
+			state = floor(rand_range(3,6))
+		else:
+			state = floor(rand_range(0,8))
 		can_change_direction = false
 		change_direction_timer.start()
 	
