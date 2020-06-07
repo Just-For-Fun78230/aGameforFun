@@ -28,7 +28,7 @@ position = Vector2( -152, 263.136 )
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="DirtTileMap" parent="TileMaps" instance=ExtResource( 8 )]
-tile_data = PoolIntArray( 1114176, 4, 0, 1114177, 0, 0, 1114178, 5, 0, 1114181, 0, 0 )
+tile_data = PoolIntArray( 1114181, 0, 0 )
 
 [node name="Plaformer1" parent="TileMaps" instance=ExtResource( 2 )]
 tile_data = PoolIntArray( 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0 )
@@ -110,7 +110,6 @@ ball_speed_y = -100
 
 [node name="Skeleton" parent="TileMaps/ennemys" instance=ExtResource( 6 )]
 position = Vector2( 896, 272.705 )
-start_velocity = -20
 
 [node name="Fireangel" parent="TileMaps/ennemys" instance=ExtResource( 7 )]
 position = Vector2( 952, 80 )

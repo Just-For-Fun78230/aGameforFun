@@ -91,6 +91,9 @@ func _do(delta):
 		var old_speed
 		$AnimationPlayer.play("Walk")
 		show_walk()
+		on_wall()
+		#if is_on_wall():
+			#skeleton_max_speed.x *= -1
 		if Global.player_position_x > self.get_position().x:
 			old_speed = skeleton_max_speed.x
 			skeleton_max_speed.x = 20
