@@ -10,9 +10,8 @@
 [ext_resource path="res://scenes/characters/ennemys/DammageSkeleton.gd" type="Script" id=8]
 [ext_resource path="res://art/characters/Enemys/Skeleton/Skeleton Dead.png" type="Texture" id=9]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.82985
-height = 12.6955
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5.73905, 11.9621 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Attack"
@@ -81,7 +80,7 @@ tracks/0/keys = {
 extents = Vector2( 4.82153, 12.6355 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 8.21481, 12.084 )
+extents = Vector2( 6.98489, 8.72106 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 6.63691, 3.71368 )
@@ -94,7 +93,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.66867, 3.88078 )
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Walk"
@@ -110,12 +109,12 @@ texture = ExtResource( 3 )
 hframes = 18
 
 [node name="IdleSprite" type="Sprite" parent="."]
+position = Vector2( -2.38419e-07, 0 )
 texture = ExtResource( 1 )
 hframes = 11
 frame = 10
 
 [node name="WalkSprite" type="Sprite" parent="."]
-visible = false
 texture = ExtResource( 2 )
 hframes = 13
 
@@ -128,21 +127,18 @@ hframes = 15
 
 [node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
 rotation = -1.5708
-enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 8
 
 [node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
 position = Vector2( 0, 8.34245 )
 rotation = -1.5708
-enabled = true
-cast_to = Vector2( 0, 10 )
+cast_to = Vector2( 0, 1 )
 collision_mask = 8
 
 [node name="RayCast2D3" type="RayCast2D" parent="Raycasts"]
-position = Vector2( 0, -5.83729 )
+position = Vector2( 0, -9.88594 )
 rotation = -1.5708
-enabled = true
 cast_to = Vector2( 0, 10 )
 collision_mask = 8
 
@@ -172,7 +168,7 @@ __meta__ = {
 
 [node name="KillDetector" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillDetector"]
 modulate = Color( 0.121569, 0.0980392, 0.835294, 1 )
@@ -202,6 +198,7 @@ position = Vector2( -2.0783, 1.13362 )
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_PlayerDetect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_PlayerDetect_body_exited"]
 [connection signal="area_exited" from="KillDetector" to="." method="_on_KillDetector_area_exited"]
+[connection signal="body_entered" from="KillDetector" to="." method="_on_KillDetector_body_entered"]
 [connection signal="timeout" from="DeadTimer" to="." method="_on_DeadTimer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]
 [connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]

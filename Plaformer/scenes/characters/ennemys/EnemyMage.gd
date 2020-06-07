@@ -21,10 +21,8 @@ func _ready() -> void:
 
 
 
-
 func _on_KillDetector_area_entered(area: Area2D):
 	ennemy_health -= area.dammage
-
 
 
 func _on_Detection_body_entered(body: Node) -> void:

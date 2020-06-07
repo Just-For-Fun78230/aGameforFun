@@ -19,6 +19,7 @@ func _ready():
 	attack_timer.set_wait_time(1.8)
 	dead_timer.set_wait_time(1)
 	skeleton_max_speed.x = start_velocity
+	$HealthBar.max_value = health
 
 func _on_PlayerDetect_body_entered(body: Node) -> void:
 	if body.name == "Player":
@@ -37,6 +38,7 @@ func _on_PlayerDetect_body_exited(body: Node) -> void:
 
 func _on_KillDetector_area_exited(area: Area2D) -> void:
 	health -= area.dammage
+	see_player = true
 
 
 func _on_AttackTimer_timeout() -> void:
@@ -49,7 +51,12 @@ func _on_DeadTimer_timeout() -> void:
 
 func _on_VisibilityEnabler2D_screen_exited() -> void:
 	states = "Walk"
+	see_player = false
 
+
+func _on_KillDetector_body_entered(body: Node) -> void:
+	skeleton_max_speed.x *= -1
+ 
 
 func _physics_process(delta: float) -> void:
 	skeleton_max_speed.y = gravity * delta
@@ -62,7 +69,6 @@ func _do(delta):
 	if states == "Walk":
 		$AnimationPlayer.play("Walk")
 		show_walk()
-		on_wall()
 		skeleton_max_speed.y = move_and_slide(skeleton_max_speed, FLOOR_NORMAL).y
 		
 	elif states == "Idle":
@@ -110,6 +116,7 @@ func change_state():
 	elif states == "Walk":
 		if see_player:
 			states = "Follow"
+
 
 
 func show_idle():
