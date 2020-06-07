@@ -45,11 +45,6 @@ animations = [ {
 "name": "Jumping",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "WallSlide",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
 "loop": true,
 "name": "Attack",
@@ -59,6 +54,11 @@ animations = [ {
 "loop": true,
 "name": "Run",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "WallSlide",
+"speed": 5.0
 } ]
 
 [sub_resource type="OccluderPolygon2D" id=2]
@@ -183,7 +183,7 @@ position = Vector2( -0.110371, -3.80177 )
 scale = Vector2( 0.64, 0.64 )
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Body/Sprite"]
@@ -208,7 +208,7 @@ scale = Vector2( 0.64, 0.64 )
 texture = ExtResource( 38 )
 vframes = 12
 hframes = 8
-frame = 40
+frame = 42
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 anims/Attack = SubResource( 3 )
@@ -252,10 +252,10 @@ __meta__ = {
 anchor_top = 0.00147471
 anchor_right = 0.0
 anchor_bottom = 0.00147471
-margin_left = 7.12894
-margin_top = 5.9104
-margin_right = 357.129
-margin_bottom = 193.91
+margin_left = 7.66756
+margin_top = 5.83345
+margin_right = 357.668
+margin_bottom = 193.833
 
 [node name="HealthBar" type="TextureProgress" parent="UI"]
 modulate = Color( 0.278431, 0.984314, 0.0392157, 1 )
