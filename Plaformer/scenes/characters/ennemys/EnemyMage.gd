@@ -70,7 +70,10 @@ func _physics_process(delta: float) -> void:
 func fireball_fire(delta):
 	var fireball = FIREBALL.instance()
 	get_parent().add_child(fireball)
-	fireball.fireball_velocity.x = 200 * delta
+	if $Body.scale.x == -1:
+		fireball.fireball_velocity.x = 200 * delta
+	else:
+		fireball.fireball_velocity.x = -200 * delta
 	if $Body.scale.x == 1:
 		fireball.fireball_speed *= -1
 	fireball.position = $FireballSpawner.global_position

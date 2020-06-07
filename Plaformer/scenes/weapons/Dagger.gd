@@ -3,7 +3,7 @@ extends Area2D
 
 var dagger_speed = 200
 var dagger_velocity = Vector2()
-var dammage = 25
+var dammage = 20
 
 
 func _on_VisibilityEnabler2D_screen_exited() -> void:

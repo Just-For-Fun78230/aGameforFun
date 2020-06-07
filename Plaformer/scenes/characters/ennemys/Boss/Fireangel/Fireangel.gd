@@ -125,6 +125,31 @@ func fire_every_direction(delta):
 	fireball_down.fireball_velocity.x = 0 * delta
 	fireball_down.fireball_velocity.y = fire_every_direction_speed * delta
 	fireball_down.position = $FireballSpawner.global_position
+	
+	var fireball_up_left = FIREBALL.instance()
+	get_parent().add_child(fireball_up_left)
+	fireball_up_left.fireball_velocity.x = -fire_every_direction_speed * delta
+	fireball_up_left.fireball_velocity.y = -fire_every_direction_speed * delta
+	fireball_up_left.position = $FireballSpawner.global_position
+	
+	var fireball_up_right = FIREBALL.instance()
+	get_parent().add_child(fireball_up_right)
+	fireball_up_right.fireball_velocity.x = fire_every_direction_speed * delta
+	fireball_up_right.fireball_velocity.y = -fire_every_direction_speed * delta
+	fireball_up_right.position = $FireballSpawner.global_position
+	
+	var fireball_down_left = FIREBALL.instance()
+	get_parent().add_child(fireball_down_left)
+	fireball_down_left.fireball_velocity.x = -fire_every_direction_speed * delta
+	fireball_down_left.fireball_velocity.y = fire_every_direction_speed * delta
+	fireball_down_left.position = $FireballSpawner.global_position
+	
+	var fireball_down_right = FIREBALL.instance()
+	get_parent().add_child(fireball_down_right)
+	fireball_down_right.fireball_velocity.x = fire_every_direction_speed * delta
+	fireball_down_right.fireball_velocity.y = fire_every_direction_speed * delta
+	fireball_down_right.position = $FireballSpawner.global_position
+
 
 
 func heath():

@@ -59,7 +59,6 @@ func _physics_process(delta: float) -> void:
 	#print(states)
 
 func _do(delta):
-
 	if states == "Walk":
 		$AnimationPlayer.play("Walk")
 		show_walk()
