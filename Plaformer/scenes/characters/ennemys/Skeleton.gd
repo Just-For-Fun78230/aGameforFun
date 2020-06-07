@@ -5,7 +5,7 @@ onready var attack_timer = $AttackTimer
 onready var dead_timer = $DeadTimer
 
 
-var skeleton_max_speed = Vector2(start_velocity,0)
+var skeleton_max_speed = Vector2(20,0)
 var states = "Walk"
 var stop_attack = true
 var should_stop_attack
@@ -18,7 +18,7 @@ export var health = 200
 func _ready():
 	attack_timer.set_wait_time(1.8)
 	dead_timer.set_wait_time(1)
-
+	skeleton_max_speed.x = start_velocity
 
 func _on_PlayerDetect_body_entered(body: Node) -> void:
 	if body.name == "Player":

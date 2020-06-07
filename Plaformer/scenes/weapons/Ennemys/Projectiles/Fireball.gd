@@ -14,10 +14,16 @@ func _on_Fireball_body_entered(_body: Node) -> void:
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	fireball_velocity.x =  fireball_speed * delta 
+	#fireball_velocity.x =  fireball_speed * delta 
 	translate(fireball_velocity)
-	if fireball_velocity.x < 0:
+	if fireball_velocity.x < 0 and fireball_velocity.y == 0:
 		$Sprite.flip_h = true
+	elif fireball_velocity.x > 0 and fireball_velocity.y == 0:
+		$Sprite.flip_h = false
+	elif fireball_velocity.x == 0 and fireball_velocity.y > 0:
+		$Sprite.rotation_degrees = 90
+	elif fireball_velocity.x == 0 and fireball_velocity.y < 0:
+		$Sprite.rotation_degrees = -90
 
 
 

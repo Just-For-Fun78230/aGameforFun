@@ -11,6 +11,9 @@ position = Vector2( -0.0831566, 0 )
 rotation = 1.5708
 script = ExtResource( 2 )
 
+[node name="MiniBallTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Body" type="Node2D" parent="."]
 
 [node name="MiniBallSpawner" type="Position2D" parent="Body"]
@@ -26,9 +29,6 @@ collision_mask = 1024
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Scanner"]
 position = Vector2( 0, 99.4623 )
 shape = SubResource( 1 )
-
-[node name="MiniBallTimer" type="Timer" parent="."]
-one_shot = true
+[connection signal="timeout" from="MiniBallTimer" to="." method="_on_MiniDaggerTimer_timeout"]
 [connection signal="body_entered" from="Body/Scanner" to="." method="_on_Scanner_body_entered"]
 [connection signal="body_exited" from="Body/Scanner" to="." method="_on_Scanner_body_exited"]
-[connection signal="timeout" from="MiniBallTimer" to="." method="_on_MiniDaggerTimer_timeout"]

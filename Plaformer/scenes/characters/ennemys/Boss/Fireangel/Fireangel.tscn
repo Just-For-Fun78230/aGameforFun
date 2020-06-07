@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://art/characters/Enemys/Boss/FireangelArt/Fireangel.png" type="Texture" id=1]
 [ext_resource path="res://scenes/characters/ennemys/Boss/Fireangel/Fireangel.gd" type="Script" id=2]
+[ext_resource path="res://art/UI/Lifebar/Over.png" type="Texture" id=3]
+[ext_resource path="res://art/UI/Lifebar/behind.png" type="Texture" id=4]
+[ext_resource path="res://art/UI/Lifebar/inFront.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4.97269, 7.89208 )
 
 [node name="Fireangel" type="KinematicBody2D"]
 collision_layer = 2
@@ -19,6 +25,36 @@ shape = SubResource( 1 )
 
 [node name="MultiMeshInstance2D" type="MultiMeshInstance2D" parent="."]
 
-[node name="ChangeDirectionTimer" type="Timer" parent="."]
+[node name="FireballSpawner" type="Position2D" parent="."]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="ChangeDirectionTimer" type="Timer" parent="Timers"]
 one_shot = true
-[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_ChangeDirectionTimer_timeout"]
+
+[node name="FireEveryDirectionTimer" type="Timer" parent="Timers"]
+
+[node name="KillDetector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillDetector"]
+shape = SubResource( 2 )
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = -16.0
+margin_top = -19.1753
+margin_right = 16.0
+margin_bottom = 12.8247
+rect_scale = Vector2( 1, 0.4 )
+max_value = 1000.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timers/ChangeDirectionTimer" to="." method="_on_ChangeDirectionTimer_timeout"]
+[connection signal="timeout" from="Timers/FireEveryDirectionTimer" to="." method="_on_FireEveryDirectionTimer_timeout"]
+[connection signal="area_entered" from="KillDetector" to="." method="_on_KillDetector_area_entered"]

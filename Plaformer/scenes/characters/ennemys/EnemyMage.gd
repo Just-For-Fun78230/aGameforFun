@@ -24,7 +24,7 @@ func _ready() -> void:
 
 func _on_KillDetector_area_entered(area: Area2D):
 	ennemy_health -= area.dammage
-	
+
 
 
 func _on_Detection_body_entered(body: Node) -> void:
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	
 	if can_shoot == true and should_shoot == true:
-		fireball_fire()
+		fireball_fire(delta)
 		fireball_timer.start()
 		can_shoot = false
 
@@ -67,9 +67,10 @@ func _physics_process(delta: float) -> void:
 
 
 
-func fireball_fire():
+func fireball_fire(delta):
 	var fireball = FIREBALL.instance()
 	get_parent().add_child(fireball)
+	fireball.fireball_velocity.x = 200 * delta
 	if $Body.scale.x == 1:
 		fireball.fireball_speed *= -1
 	fireball.position = $FireballSpawner.global_position
