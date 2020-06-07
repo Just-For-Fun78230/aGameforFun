@@ -24,6 +24,14 @@ func _physics_process(delta: float) -> void:
 		$Sprite.rotation_degrees = 90
 	elif fireball_velocity.x == 0 and fireball_velocity.y < 0:
 		$Sprite.rotation_degrees = -90
+	elif fireball_velocity.x > 0 and fireball_velocity.y < 0:
+		$Sprite.rotation_degrees = -45
+	elif fireball_velocity.x < 0 and fireball_velocity.y < 0:
+		$Sprite.rotation_degrees = -135
+	elif fireball_velocity.x > 0 and fireball_velocity.y > 0:
+		$Sprite.rotation_degrees = 45
+	elif fireball_velocity.x < 0 and fireball_velocity.y > 0:
+		$Sprite.rotation_degrees = 135
 
 
 
