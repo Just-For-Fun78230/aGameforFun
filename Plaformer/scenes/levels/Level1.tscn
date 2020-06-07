@@ -35,6 +35,7 @@ world_scene = "res://scenes/levels/Level2.tscn"
 [node name="Skeleton" parent="Ennemies" instance=ExtResource( 13 )]
 position = Vector2( 1638.83, 488.861 )
 scale = Vector2( 1.5, 1.5 )
+health = 250
 
 [node name="MiniShooters" type="Node" parent="Ennemies"]
 
