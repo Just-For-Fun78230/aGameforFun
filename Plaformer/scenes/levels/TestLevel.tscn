@@ -116,7 +116,7 @@ start_velocity = -20
 position = Vector2( 952, 80 )
 
 [node name="FlyingEye" parent="TileMaps/ennemys" instance=ExtResource( 16 )]
-position = Vector2( 1200, 264.358 )
+position = Vector2( 1064, 232 )
 
 [node name="PickUpDagger" type="Node" parent="."]
 
