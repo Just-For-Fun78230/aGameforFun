@@ -121,6 +121,9 @@ func _physics_process(delta: float) -> void:
 	
 	
 	Global.player_position_x = self.get_position().x 
+	Global.player_position_y = self.get_position().y 
+	
+	
 
 
 

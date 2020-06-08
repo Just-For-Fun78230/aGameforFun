@@ -8,7 +8,7 @@ var can_wall_jump = false
 var can_dash = false
 
 var player_position_x
-
+var player_position_y
 
 func save_game():
 	#var save_dir{
